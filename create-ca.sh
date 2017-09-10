@@ -17,11 +17,11 @@ pkill gpg-agent
 sleep 1
 
 # Generate a new private key. It will never leave the device.
-#yubico-piv-tool -s9c -agenerate -k$MGM_KEY >${CA}_pub_key.txt
+yubico-piv-tool -s9c -agenerate -k$MGM_KEY >${CA}_pub_key.txt
 # Generate and import a temporary certificate (needed to make the private key visible).
-#yubico-piv-tool -s9c -S'/CN=bar/OU=test/O=example.com/' -averify -aselfsign -P$PIN <${CA}_pub_key.txt >temp_${CA}_cert.txt
-#yubico-piv-tool -s9c -aimport-certificate -k$MGM_KEY <temp_${CA}_cert.txt
-#rm temp_${CA}_cert.txt
+yubico-piv-tool -s9c -S'/CN=bar/OU=test/O=example.com/' -averify -aselfsign -P$PIN <${CA}_pub_key.txt >temp_${CA}_cert.txt
+yubico-piv-tool -s9c -aimport-certificate -k$MGM_KEY <temp_${CA}_cert.txt
+rm -f temp_${CA}_cert.txt
 
 gen_config >${CA}.cnf
 
