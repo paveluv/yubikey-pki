@@ -1,0 +1,11 @@
+*~
+*.crt
+*.key
+*.p12
+*.csr
+*.pem
+*.crl
+*.srl
+crlnumber
+crlnumber.old
+certindex
