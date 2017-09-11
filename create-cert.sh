@@ -17,6 +17,10 @@ test -z "${OU}" && {
 
 PIN=$(piv_pin)
 
+# Gpg-agent may hold a lock on the card, so kill it before proceeding.
+pkill gpg-agent
+sleep 1
+
 #openssl ecparam -name secp256k1 -genkey -noout -out ${OU}.key
 openssl genrsa -out ${OU}.key 2048
 gen_config >${OU}.cnf
